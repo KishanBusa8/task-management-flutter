@@ -7,6 +7,7 @@ export const create = {
         title: Joi.string().required(),
         description: Joi.string().required(),
         dueDate: Joi.string().optional(),
+        dueTime: Joi.string().optional(),
         status: Joi.string().required().custom(todoEnumCustomValidation),
     }),
 }

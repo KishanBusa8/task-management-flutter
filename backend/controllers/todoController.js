@@ -4,7 +4,7 @@ import ApiError from '../utils/api-error.js';
 
 const createTodo = async (req, res, next) => {
   try {
-    const { title, description, status, dueDate } = req.body;
+    const { title, description, status, dueDate,dueTime } = req.body;
     const todo = new Todo({
       title,
       description,

@@ -123,22 +123,21 @@ class TaskWidget extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // Text(
-                          //   DateFormat('hh:mm a')
-                          //       .format(task.value.createdAtTime),
-                          //   style: TextStyle(
-                          //       fontSize: 14,
-                          //       color: task.value.status == TaskStatus.done.name
-                          //           ? Colors.white
-                          //           : Colors.grey),
-                          // ),
+                          Text(
+                            task.value.dueTime ?? '',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: task.value.status == TaskStatus.done.name
+                                    ? Colors.white
+                                    : Colors.grey),
+                          ),
                           Text(
                             CommonFunctions.convertServerDateToString(
-                                task.value.createdAt ?? ''),
+                                task.value.dueDate ?? ''),
                             style: CustomTextStyle.body2().copyWith(
                               fontSize: 12,
                               color: task.value.status == TaskStatus.done.name
-                                  ? ColorSchema.universalSwap()
+                                  ? Colors.white
                                   : Colors.grey,
                             ),
                           ),

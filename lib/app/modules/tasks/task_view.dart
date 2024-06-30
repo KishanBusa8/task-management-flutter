@@ -46,8 +46,7 @@ class _TaskViewState extends State<TaskView> {
       }
     } else {
       return DateFormat('hh:mm a')
-          .format(
-              DateFormat('yyyy-MM-ddThh:mm').parse(widget.task!.dueTime ?? ''))
+          .format(DateFormat('hh:mm a').parse(widget.task!.dueTime ?? ''))
           .toString();
     }
   }
@@ -61,7 +60,7 @@ class _TaskViewState extends State<TaskView> {
         return time;
       }
     } else {
-      return DateFormat('yyyy-MM-ddThh:mm').parse(widget.task!.dueTime ?? '');
+      return DateFormat('hh:mm a').parse(widget.task!.dueTime ?? '');
     }
   }
 
@@ -424,7 +423,7 @@ class _TaskViewState extends State<TaskView> {
                   if (widget.task?.dueDate == null) {
                     date = selectedDate;
                   } else {
-                    widget.task!.dueTime =
+                    widget.task!.dueDate =
                         selectedDate.millisecondsSinceEpoch.toString();
                   }
                 });

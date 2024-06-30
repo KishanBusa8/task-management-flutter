@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
 
         /// Main Body
         child: SafeArea(
-          child: Container(),
+          child: _buildBody(),
         ),
       ),
     );
@@ -109,10 +109,11 @@ class HomeScreen extends StatelessWidget {
           Obx(() {
             return SizedBox(
               width: double.infinity,
-              height: 585,
+              height: MediaQuery.of(Get.context!).size.height / 1.5,
               child: _controller.tasks.value.isNotEmpty
                   ? ListView.builder(
-                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: _controller.tasks.value.length,
                       itemBuilder: (BuildContext context, int index) {
                         var task = _controller.tasks.value[index];
@@ -129,16 +130,19 @@ class HomeScreen extends StatelessWidget {
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text(MyString.deletedTask,
-                                  style: CustomTextStyle.body2().copyWith(
-                                    color: Colors.grey,
-                                  ))
+                              Text(
+                                MyString.deletedTask,
+                                style: CustomTextStyle.body2().copyWith(
+                                  color: Colors.grey,
+                                ),
+                              )
                             ],
                           ),
                           onDismissed: (direction) {},
                           key: Key(task.sId ?? ''),
                           child: TaskWidget(
-                            task: _controller.tasks.value[index],
+                            task: task.obs,
+                            index: index,
                           ),
                         );
                       },
