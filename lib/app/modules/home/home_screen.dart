@@ -165,7 +165,9 @@ class HomeScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                          onDismissed: (direction) {},
+                          onDismissed: (direction) {
+                            _controller.deleteTaskById(task.sId ?? '');
+                          },
                           key: Key(task.sId ?? ''),
                           child: TaskWidget(
                             task: task.obs,

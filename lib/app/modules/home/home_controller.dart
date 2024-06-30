@@ -91,6 +91,7 @@ class HomeController extends GetxController {
       if (response.statusCode == 200) {
         tasks.value.removeWhere((e) => e.sId == id);
         allTasks.value.removeWhere((e) => e.sId == id);
+        tasks.refresh();
         CommonFunctions().showSnackBar(message: response.body['message']);
       } else {
         CommonFunctions().showSnackBar(

@@ -41,7 +41,9 @@ class TaskWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: task.value.status == TaskStatus.done.name
                 ? const Color.fromARGB(154, 119, 144, 229)
-                : Colors.white,
+                : task.value.status == TaskStatus.inProgress.name
+                    ? Colors.pinkAccent.shade100
+                    : Colors.white,
             borderRadius: BorderRadius.circular(8),
             boxShadow: [
               BoxShadow(
@@ -126,7 +128,9 @@ class TaskWidget extends StatelessWidget {
                     style: TextStyle(
                       color: task.value.status == TaskStatus.done.name
                           ? SingleColor.primary
-                          : const Color.fromARGB(255, 164, 164, 164),
+                          : task.value.status == TaskStatus.inProgress.name
+                              ? Colors.white
+                              : const Color.fromARGB(255, 164, 164, 164),
                       fontWeight: FontWeight.w300,
                       decoration: task.value.status == TaskStatus.done.name
                           ? TextDecoration.lineThrough
@@ -151,7 +155,10 @@ class TaskWidget extends StatelessWidget {
                                 fontSize: 14,
                                 color: task.value.status == TaskStatus.done.name
                                     ? Colors.white
-                                    : Colors.grey),
+                                    : task.value.status ==
+                                            TaskStatus.inProgress.name
+                                        ? Colors.white
+                                        : Colors.grey),
                           ),
                           Text(
                             CommonFunctions.convertServerDateToString(
@@ -160,7 +167,10 @@ class TaskWidget extends StatelessWidget {
                               fontSize: 12,
                               color: task.value.status == TaskStatus.done.name
                                   ? Colors.white
-                                  : Colors.grey,
+                                  : task.value.status ==
+                                          TaskStatus.inProgress.name
+                                      ? Colors.white
+                                      : Colors.grey,
                             ),
                           ),
                         ],
