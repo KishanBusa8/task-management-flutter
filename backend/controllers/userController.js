@@ -7,10 +7,14 @@ import httpStatus from 'http-status';
 const registerUser = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
+    const alreadyUser = await User.findOne({ email: req.body.email });
+    if (alreadyUser) {
+      throw new ApiError(500, 'User already exist!');
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ name, password: hashedPassword, email });
     await user.save();
-    const token = jwt.sign({ id: user._id.toString() }, 'femish');
+    const token = jwt.sign({ id: user._id.toString() }, process.env.JWT_SECRET_KEY);
     res.status(httpStatus.CREATED).send({ user, token });
   } catch (error) {
     res.status(error.statusCode ?? httpStatus.BAD_REQUEST).send({

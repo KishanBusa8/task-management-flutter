@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> checkUserLogin() async {
-    if (GetStorage().read(StorageConstants.token) == null) {
+    if (GetStorage().read(StorageConstants.token) != null) {
       Get.offAllNamed(
         Routes.homeScreen,
       );

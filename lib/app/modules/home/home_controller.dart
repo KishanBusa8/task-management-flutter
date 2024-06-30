@@ -11,7 +11,9 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    getAllTask();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getAllTask();
+    });
     super.onInit();
   }
 
