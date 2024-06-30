@@ -59,17 +59,19 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 /// CircularProgressIndicator
-                SizedBox(
-                  width: 25,
-                  height: 25,
-                  child: CircularProgressIndicator(
-                    valueColor:
-                        const AlwaysStoppedAnimation(SingleColor.primary),
-                    backgroundColor: Colors.grey,
-                    value: _controller.checkDoneTask() /
-                        _controller.valueOfTheIndicator(),
-                  ),
-                ),
+                Obx(() {
+                  return SizedBox(
+                    width: 25,
+                    height: 25,
+                    child: CircularProgressIndicator(
+                      valueColor:
+                          const AlwaysStoppedAnimation(SingleColor.primary),
+                      backgroundColor: Colors.grey,
+                      value: _controller.checkDoneTask() /
+                          _controller.valueOfTheIndicator(),
+                    ),
+                  );
+                }),
                 const SizedBox(
                   width: 25,
                 ),
@@ -86,12 +88,36 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 3,
                     ),
-                    Text(
-                      "${_controller.checkDoneTask()} of ${_controller.tasks.length} task",
-                      style: CustomTextStyle.heading(),
-                    ),
+                    Obx(() {
+                      return Text(
+                        "${_controller.checkDoneTask()} of ${_controller.tasks.length} task",
+                        style: CustomTextStyle.heading(),
+                      );
+                    }),
                   ],
-                )
+                ),
+                const Spacer(),
+
+                /// Filter option to filter task by status
+                Obx(() {
+                  return DropdownButton<String>(
+                    value: _controller.selectedFilter.value,
+                    items: <String>['All', 'ToDo', 'InProgress', 'Done']
+                        .map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (s) {
+                      _controller.selectedFilter.value = s ?? '';
+                      _controller.filterTask();
+                    },
+                  );
+                }),
+                const SizedBox(
+                  width: 20,
+                ),
               ],
             ),
           ),

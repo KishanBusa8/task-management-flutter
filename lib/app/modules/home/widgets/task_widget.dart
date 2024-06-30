@@ -61,7 +61,9 @@ class TaskWidget extends StatelessWidget {
                   } else {
                     task.value.status = TaskStatus.done.name;
                   }
+                  _controller.tasks.value[index].status = task.value.status;
                   task.refresh();
+                  _controller.tasks.refresh();
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 600),
@@ -81,17 +83,35 @@ class TaskWidget extends StatelessWidget {
               /// title of Task
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 5, top: 3),
-                child: Text(
-                  task.value.title ?? '',
-                  style: TextStyle(
-                    color: task.value.status == TaskStatus.done.name
-                        ? SingleColor.primary
-                        : Colors.black,
-                    fontWeight: FontWeight.w500,
-                    decoration: task.value.status == TaskStatus.done.name
-                        ? TextDecoration.lineThrough
-                        : null,
-                  ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        task.value.title ?? '',
+                        style: TextStyle(
+                          color: task.value.status == TaskStatus.done.name
+                              ? SingleColor.primary
+                              : Colors.black,
+                          fontWeight: FontWeight.w500,
+                          decoration: task.value.status == TaskStatus.done.name
+                              ? TextDecoration.lineThrough
+                              : null,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      (task.value.status ?? '').capitalizeFirst ?? '',
+                      style: TextStyle(
+                        color: task.value.status == TaskStatus.done.name
+                            ? SingleColor.primary
+                            : Colors.black,
+                        fontWeight: FontWeight.w500,
+                        decoration: task.value.status == TaskStatus.done.name
+                            ? TextDecoration.lineThrough
+                            : null,
+                      ),
+                    ),
+                  ],
                 ),
               ),
 

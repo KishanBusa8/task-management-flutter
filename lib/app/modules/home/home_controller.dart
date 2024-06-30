@@ -7,7 +7,9 @@ import 'package:task_management/helpers/constants/api_constants.dart';
 
 class HomeController extends GetxController {
   RxList<Task> tasks = <Task>[].obs;
+  RxList<Task> allTasks = <Task>[].obs;
   final ApiService _apiService = ApiService();
+  RxString selectedFilter = 'All'.obs;
 
   @override
   void onInit() {
@@ -37,6 +39,28 @@ class HomeController extends GetxController {
     }
   }
 
+  // filter task
+  void filterTask() {
+    tasks.value = allTasks
+        .where((e) => getStatus().isEmpty ? true : e.status == getStatus())
+        .toList();
+  }
+
+  String getStatus() {
+    switch (selectedFilter.value) {
+      case 'ToDo':
+        return TaskStatus.todo.name;
+      case 'InProgress':
+        return TaskStatus.inProgress.name;
+      case 'Done':
+        return TaskStatus.done.name;
+      case 'All':
+        return '';
+      default:
+        return '';
+    }
+  }
+
   Future<void> getAllTask() async {
     CommonFunctions().showLoadingDialog();
     try {
@@ -46,6 +70,8 @@ class HomeController extends GetxController {
       );
       Get.back();
       if (response.statusCode == 200) {
+        allTasks.value =
+            (response.body as List).map((e) => Task.fromJson(e)).toList();
         tasks.value =
             (response.body as List).map((e) => Task.fromJson(e)).toList();
       }
@@ -64,6 +90,7 @@ class HomeController extends GetxController {
       Get.back();
       if (response.statusCode == 200) {
         tasks.value.removeWhere((e) => e.sId == id);
+        allTasks.value.removeWhere((e) => e.sId == id);
         CommonFunctions().showSnackBar(message: response.body['message']);
       } else {
         CommonFunctions().showSnackBar(
