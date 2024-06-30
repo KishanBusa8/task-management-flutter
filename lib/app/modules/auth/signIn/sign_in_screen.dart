@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_management/app/modules/auth/signIn/sign_in_controller.dart';
+import 'package:task_management/app/routes/pages.dart';
 import 'package:task_management/components/custom_button.dart';
 import 'package:task_management/components/custom_text_fIeld.dart';
+import 'package:task_management/components/divider_with_text.dart';
 import 'package:task_management/helpers/schema/color_schema.dart';
 import 'package:task_management/helpers/schema/text_styles.dart';
 
@@ -32,7 +34,7 @@ class SignIn extends StatelessWidget {
                   ),
                   Text(
                     'SIGN IN',
-                    style: CustomTextStyle.heading2().copyWith(),
+                    style: CustomTextStyle.heading2(),
                   ),
                   const SizedBox(
                     height: 20,
@@ -42,13 +44,13 @@ class SignIn extends StatelessWidget {
                       textEditingController:
                           _signInController.emailTextController.value,
                       hintText: 'johndeo',
-                      nameText: 'User Name',
+                      nameText: 'Email',
                       onChanged: (String value) {
                         _signInController.emailTextController.refresh();
                       },
                       validator: (String? value) {
                         if (value!.isEmpty) {
-                          return "Please enter your user name";
+                          return "Please enter your email";
                         } else {
                           return null;
                         }
@@ -106,6 +108,32 @@ class SignIn extends StatelessWidget {
                         title: 'Sign In',
                         buttonType: _signInController.getButtonType(),
                       ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        const DividerWithText(text: 'NOT REGISTERED YET?'),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: CustomButton(
+                            onTap: () {
+                              Get.offAllNamed(Routes.signUp);
+                            },
+                            backgroundColor: ColorSchema.universalSwap(),
+                            titleColor: ColorSchema.background(),
+                            title: 'Create an account',
+                            buttonType: ButtonType.enable,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(
