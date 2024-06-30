@@ -24,7 +24,7 @@ const createTodo = async (req, res, next) => {
 
 const getTodos = async (req, res, next) => {
   try {
-    const todos = await Todo.find({ user: req.user._id });
+    const todos = await Todo.find({ user: req.user._id }).sort({createdAt : -1});
     return res.status(httpStatus.OK).json(todos);
   } catch (error) {
     res.status(error.statusCode ?? httpStatus.BAD_REQUEST).send({

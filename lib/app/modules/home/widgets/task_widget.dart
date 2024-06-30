@@ -62,8 +62,10 @@ class TaskWidget extends StatelessWidget {
                     task.value.status = TaskStatus.done.name;
                   }
                   _controller.tasks.value[index].status = task.value.status;
-                  task.refresh();
-                  _controller.tasks.refresh();
+                  _controller.updateTaskById(
+                    _controller.tasks.value[index].sId!,
+                    _controller.tasks.value[index],
+                  );
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 600),
