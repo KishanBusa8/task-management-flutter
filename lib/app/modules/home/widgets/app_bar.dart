@@ -60,7 +60,7 @@ class _MyAppBarState extends State<MyAppBar>
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 132,
+      height: 100,
       child: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: Row(

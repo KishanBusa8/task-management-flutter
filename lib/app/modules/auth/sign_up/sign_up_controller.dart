@@ -23,7 +23,9 @@ class SignUpController extends GetxController {
   RxBool loading = false.obs;
 
   ButtonType getButtonType() {
-    if (emailTextController.value.text.isEmpty ||
+    if (loading.value) {
+      return ButtonType.progress;
+    } else if (emailTextController.value.text.isEmpty ||
         !emailTextController.value.text.isEmail ||
         nameTextController.value.text.isEmpty ||
         passwordTextController.value.text.isEmpty) {

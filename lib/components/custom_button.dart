@@ -91,9 +91,13 @@ class CustomButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // if (buttonType == ButtonType.progress)
-                // Lottie.asset(ImageConstants.starLoader,
-                //     frameRate: FrameRate.max, fit: BoxFit.cover),
+                if (buttonType == ButtonType.progress)
+                  Container(
+                    alignment: Alignment.center,
+                    height: 25,
+                    width: 25,
+                    child: const CircularProgressIndicator(),
+                  ),
                 if (prefixIcon != null) prefixIcon ?? Container(),
                 if (prefixIcon != null)
                   const SizedBox(
