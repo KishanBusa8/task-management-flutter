@@ -49,7 +49,7 @@ const getTodoById = async (req, res, next) => {
 
 const updateTodo = async (req, res, next) => {
   try {
-    const { title, description, status, dueDate } = req.body;
+    const { title, description, status, dueDate,dueTime } = req.body;
     const updatedTodo = await Todo.findByIdAndUpdate(
       req.params.id,
       {

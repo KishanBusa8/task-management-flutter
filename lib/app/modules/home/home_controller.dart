@@ -115,7 +115,8 @@ class HomeController extends GetxController {
         'dueTime': task.dueTime,
       });
       Get.back();
-      if (response.statusCode == 200) {
+      Get.back();
+      if (response.statusCode == 201) {
         CommonFunctions().showSnackBar(message: 'Task Added successfully');
         getAllTask();
       } else {
@@ -141,6 +142,8 @@ class HomeController extends GetxController {
         'dueTime': task.dueTime,
       });
       Get.back();
+      Get.back();
+
       if (response.statusCode == 200) {
         CommonFunctions().showSnackBar(message: 'Task Updated successfully');
         getAllTask();

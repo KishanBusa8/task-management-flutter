@@ -139,7 +139,8 @@ class HomeScreen extends StatelessWidget {
               child: _controller.tasks.value.isNotEmpty
                   ? ListView.builder(
                       shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.only(bottom: 50),
                       itemCount: _controller.tasks.value.length,
                       itemBuilder: (BuildContext context, int index) {
                         var task = _controller.tasks.value[index];

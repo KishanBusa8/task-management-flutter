@@ -17,7 +17,7 @@ const todoSchema = new Schema({
   status: {
     type: String,
     enum : todoEnum,
-    default : 'toDo',
+    default : 'todo',
     required: true,
   },
   dueTime : {

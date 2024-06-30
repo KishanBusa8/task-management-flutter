@@ -17,6 +17,7 @@ export const update = {
         title: Joi.string().optional(),
         description: Joi.string().optional(),
         dueDate: Joi.string().optional(),
+        dueTime: Joi.string().optional(),
         status: Joi.string().optional().custom(todoEnumCustomValidation),
     }),
 }

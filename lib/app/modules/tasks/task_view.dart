@@ -31,10 +31,18 @@ class TaskView extends StatefulWidget {
 class _TaskViewState extends State<TaskView> {
   String? title;
   String? subtitle;
-  DateTime? time;
-  DateTime? date;
+  String? status;
+  DateTime? time = DateTime.now();
+  DateTime? date = DateTime.now();
 
   final HomeController _controller = Get.find();
+  RxString selectedFilter = 'todo'.obs;
+
+  @override
+  void initState() {
+    selectedFilter = (widget.task?.status ?? 'todo').obs;
+    super.initState();
+  }
 
   /// Show Selected Time As String Format
   String showTime(DateTime? time) {
@@ -105,20 +113,14 @@ class _TaskViewState extends State<TaskView> {
 
   /// If any task already exist app will update it otherwise the app will add a new task
   dynamic isTaskAlreadyExistUpdateTask() {
-    if ((title?.isEmpty ?? true) || (subtitle?.isEmpty ?? true)) {
-      CommonFunctions().emptyFieldsWarning();
-      return;
-    }
     if (widget.task?.sId != null) {
       try {
-        widget.taskControllerForTitle?.text = title ?? '';
-        widget.taskControllerForSubtitle?.text = subtitle ?? '';
         // Update task
         _controller.updateTaskById(
           widget.task!.sId!,
           Task(
-            title: title,
-            description: subtitle,
+            title: widget.taskControllerForTitle?.text,
+            description: widget.taskControllerForSubtitle?.text,
             dueDate: widget.task!.dueDate,
             dueTime: widget.task!.dueTime,
             status: widget.task!.status,
@@ -128,6 +130,10 @@ class _TaskViewState extends State<TaskView> {
         CommonFunctions().nothingEnterOnUpdateTaskMode();
       }
     } else {
+      if ((title?.isEmpty ?? true) || (subtitle?.isEmpty ?? true)) {
+        CommonFunctions().emptyFieldsWarning();
+        return;
+      }
       //Create new task
       _controller.createTask(
         Task(
@@ -464,7 +470,52 @@ class _TaskViewState extends State<TaskView> {
                 ],
               ),
             ),
-          )
+          ),
+
+          /// Filter option to filter task
+          Obx(() {
+            return Container(
+              margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              width: double.infinity,
+              height: 55,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.grey.shade300, width: 1),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text('Status', style: CustomTextStyle.body2()),
+                  ),
+                  Expanded(child: Container()),
+                  DropdownButton<String>(
+                    underline: Container(),
+                    value: selectedFilter.value,
+                    items: <String>[
+                      TaskStatus.todo.name,
+                      TaskStatus.inProgress.name,
+                      TaskStatus.done.name
+                    ].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (s) {
+                      selectedFilter.value = s ?? '';
+                      if (widget.task?.sId != null) {
+                        widget.task?.status = s ?? '';
+                      } else {
+                        status = s ?? '';
+                      }
+                    },
+                  ),
+                ],
+              ),
+            );
+          }),
         ],
       ),
     );

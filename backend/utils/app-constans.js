@@ -1,3 +1,3 @@
-export const todoEnum = ['toDo','inProgress','done'];
+export const todoEnum = ['todo','inProgress','done'];
 
  
