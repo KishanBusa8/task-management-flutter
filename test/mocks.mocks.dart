@@ -15,6 +15,8 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i4;
 import 'package:task_management/app/data/services/apiService/api_services.dart'
     as _i3;
+import 'package:task_management/app/modules/auth/sign_up/sign_up_controller.dart'
+    as _i13;
 import 'package:task_management/app/modules/auth/signIn/sign_in_controller.dart'
     as _i10;
 import 'package:task_management/components/custom_button.dart' as _i11;
@@ -364,6 +366,22 @@ class MockApiService extends _i1.Mock implements _i3.ApiService {
         Invocation.getter(#isClosed),
         returnValue: false,
       ) as bool);
+
+  @override
+  _i5.Future<_i2.Response<dynamic>> getData() => (super.noSuchMethod(
+        Invocation.method(
+          #getData,
+          [],
+        ),
+        returnValue:
+            _i5.Future<_i2.Response<dynamic>>.value(_FakeResponse_3<dynamic>(
+          this,
+          Invocation.method(
+            #getData,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i2.Response<dynamic>>);
 
   @override
   _i5.Future<_i2.Response<dynamic>> makeApiCall(
@@ -1940,15 +1958,15 @@ class MockGetHttpClient extends _i1.Mock implements _i2.GetHttpClient {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSignInController extends _i1.Mock implements _i10.SignInController {
+  MockSignInController() {
+    _i1.throwOnMissingStub(this);
+  }
+
   @override
   _i2.Rx<_i8.TextEditingController> get emailTextController =>
       (super.noSuchMethod(
         Invocation.getter(#emailTextController),
         returnValue: _FakeRx_6<_i8.TextEditingController>(
-          this,
-          Invocation.getter(#emailTextController),
-        ),
-        returnValueForMissingStub: _FakeRx_6<_i8.TextEditingController>(
           this,
           Invocation.getter(#emailTextController),
         ),
@@ -1973,10 +1991,6 @@ class MockSignInController extends _i1.Mock implements _i10.SignInController {
           this,
           Invocation.getter(#passwordTextController),
         ),
-        returnValueForMissingStub: _FakeRx_6<_i8.TextEditingController>(
-          this,
-          Invocation.getter(#passwordTextController),
-        ),
       ) as _i2.Rx<_i8.TextEditingController>);
 
   @override
@@ -1994,10 +2008,6 @@ class MockSignInController extends _i1.Mock implements _i10.SignInController {
   _i2.RxBool get passwordVisible => (super.noSuchMethod(
         Invocation.getter(#passwordVisible),
         returnValue: _FakeRxBool_7(
-          this,
-          Invocation.getter(#passwordVisible),
-        ),
-        returnValueForMissingStub: _FakeRxBool_7(
           this,
           Invocation.getter(#passwordVisible),
         ),
@@ -2019,10 +2029,6 @@ class MockSignInController extends _i1.Mock implements _i10.SignInController {
           this,
           Invocation.getter(#loading),
         ),
-        returnValueForMissingStub: _FakeRxBool_7(
-          this,
-          Invocation.getter(#loading),
-        ),
       ) as _i2.RxBool);
 
   @override
@@ -2041,10 +2047,6 @@ class MockSignInController extends _i1.Mock implements _i10.SignInController {
           this,
           Invocation.getter(#onStart),
         ),
-        returnValueForMissingStub: _FakeInternalFinalCallback_2<void>(
-          this,
-          Invocation.getter(#onStart),
-        ),
       ) as _i2.InternalFinalCallback<void>);
 
   @override
@@ -2054,38 +2056,30 @@ class MockSignInController extends _i1.Mock implements _i10.SignInController {
           this,
           Invocation.getter(#onDelete),
         ),
-        returnValueForMissingStub: _FakeInternalFinalCallback_2<void>(
-          this,
-          Invocation.getter(#onDelete),
-        ),
       ) as _i2.InternalFinalCallback<void>);
 
   @override
   bool get initialized => (super.noSuchMethod(
         Invocation.getter(#initialized),
         returnValue: false,
-        returnValueForMissingStub: false,
       ) as bool);
 
   @override
   bool get isClosed => (super.noSuchMethod(
         Invocation.getter(#isClosed),
         returnValue: false,
-        returnValueForMissingStub: false,
       ) as bool);
 
   @override
   bool get hasListeners => (super.noSuchMethod(
         Invocation.getter(#hasListeners),
         returnValue: false,
-        returnValueForMissingStub: false,
       ) as bool);
 
   @override
   int get listeners => (super.noSuchMethod(
         Invocation.getter(#listeners),
         returnValue: 0,
-        returnValueForMissingStub: 0,
       ) as int);
 
   @override
@@ -2095,7 +2089,6 @@ class MockSignInController extends _i1.Mock implements _i10.SignInController {
           [],
         ),
         returnValue: _i11.ButtonType.enable,
-        returnValueForMissingStub: _i11.ButtonType.enable,
       ) as _i11.ButtonType);
 
   @override
@@ -2168,7 +2161,6 @@ class MockSignInController extends _i1.Mock implements _i10.SignInController {
           [listener],
         ),
         returnValue: () {},
-        returnValueForMissingStub: () {},
       ) as _i12.Disposer);
 
   @override
@@ -2246,7 +2238,323 @@ class MockSignInController extends _i1.Mock implements _i10.SignInController {
           ],
         ),
         returnValue: () {},
-        returnValueForMissingStub: () {},
+      ) as _i12.Disposer);
+
+  @override
+  void disposeId(Object? id) => super.noSuchMethod(
+        Invocation.method(
+          #disposeId,
+          [id],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
+/// A class which mocks [SignUpController].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSignUpController extends _i1.Mock implements _i13.SignUpController {
+  MockSignUpController() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.Rx<_i8.TextEditingController> get emailTextController =>
+      (super.noSuchMethod(
+        Invocation.getter(#emailTextController),
+        returnValue: _FakeRx_6<_i8.TextEditingController>(
+          this,
+          Invocation.getter(#emailTextController),
+        ),
+      ) as _i2.Rx<_i8.TextEditingController>);
+
+  @override
+  set emailTextController(
+          _i2.Rx<_i8.TextEditingController>? _emailTextController) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #emailTextController,
+          _emailTextController,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.Rx<_i8.TextEditingController> get passwordTextController =>
+      (super.noSuchMethod(
+        Invocation.getter(#passwordTextController),
+        returnValue: _FakeRx_6<_i8.TextEditingController>(
+          this,
+          Invocation.getter(#passwordTextController),
+        ),
+      ) as _i2.Rx<_i8.TextEditingController>);
+
+  @override
+  set passwordTextController(
+          _i2.Rx<_i8.TextEditingController>? _passwordTextController) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #passwordTextController,
+          _passwordTextController,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.Rx<_i8.TextEditingController> get nameTextController =>
+      (super.noSuchMethod(
+        Invocation.getter(#nameTextController),
+        returnValue: _FakeRx_6<_i8.TextEditingController>(
+          this,
+          Invocation.getter(#nameTextController),
+        ),
+      ) as _i2.Rx<_i8.TextEditingController>);
+
+  @override
+  set nameTextController(
+          _i2.Rx<_i8.TextEditingController>? _nameTextController) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #nameTextController,
+          _nameTextController,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.RxBool get passwordVisible => (super.noSuchMethod(
+        Invocation.getter(#passwordVisible),
+        returnValue: _FakeRxBool_7(
+          this,
+          Invocation.getter(#passwordVisible),
+        ),
+      ) as _i2.RxBool);
+
+  @override
+  set passwordVisible(_i2.RxBool? _passwordVisible) => super.noSuchMethod(
+        Invocation.setter(
+          #passwordVisible,
+          _passwordVisible,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.RxBool get loading => (super.noSuchMethod(
+        Invocation.getter(#loading),
+        returnValue: _FakeRxBool_7(
+          this,
+          Invocation.getter(#loading),
+        ),
+      ) as _i2.RxBool);
+
+  @override
+  set loading(_i2.RxBool? _loading) => super.noSuchMethod(
+        Invocation.setter(
+          #loading,
+          _loading,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.InternalFinalCallback<void> get onStart => (super.noSuchMethod(
+        Invocation.getter(#onStart),
+        returnValue: _FakeInternalFinalCallback_2<void>(
+          this,
+          Invocation.getter(#onStart),
+        ),
+      ) as _i2.InternalFinalCallback<void>);
+
+  @override
+  _i2.InternalFinalCallback<void> get onDelete => (super.noSuchMethod(
+        Invocation.getter(#onDelete),
+        returnValue: _FakeInternalFinalCallback_2<void>(
+          this,
+          Invocation.getter(#onDelete),
+        ),
+      ) as _i2.InternalFinalCallback<void>);
+
+  @override
+  bool get initialized => (super.noSuchMethod(
+        Invocation.getter(#initialized),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  bool get isClosed => (super.noSuchMethod(
+        Invocation.getter(#isClosed),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  bool get hasListeners => (super.noSuchMethod(
+        Invocation.getter(#hasListeners),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  int get listeners => (super.noSuchMethod(
+        Invocation.getter(#listeners),
+        returnValue: 0,
+      ) as int);
+
+  @override
+  _i11.ButtonType getButtonType() => (super.noSuchMethod(
+        Invocation.method(
+          #getButtonType,
+          [],
+        ),
+        returnValue: _i11.ButtonType.enable,
+      ) as _i11.ButtonType);
+
+  @override
+  _i5.Future<void> signUp() => (super.noSuchMethod(
+        Invocation.method(
+          #signUp,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  void update([
+    List<Object>? ids,
+    bool? condition = true,
+  ]) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #update,
+          [
+            ids,
+            condition,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onInit() => super.noSuchMethod(
+        Invocation.method(
+          #onInit,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onReady() => super.noSuchMethod(
+        Invocation.method(
+          #onReady,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onClose() => super.noSuchMethod(
+        Invocation.method(
+          #onClose,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void $configureLifeCycle() => super.noSuchMethod(
+        Invocation.method(
+          #$configureLifeCycle,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i12.Disposer addListener(_i12.GetStateUpdate? listener) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValue: () {},
+      ) as _i12.Disposer);
+
+  @override
+  void removeListener(_i7.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void refresh() => super.noSuchMethod(
+        Invocation.method(
+          #refresh,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void refreshGroup(Object? id) => super.noSuchMethod(
+        Invocation.method(
+          #refreshGroup,
+          [id],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void notifyChildrens() => super.noSuchMethod(
+        Invocation.method(
+          #notifyChildrens,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeListenerId(
+    Object? id,
+    _i7.VoidCallback? listener,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #removeListenerId,
+          [
+            id,
+            listener,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void dispose() => super.noSuchMethod(
+        Invocation.method(
+          #dispose,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i12.Disposer addListenerId(
+    Object? key,
+    _i12.GetStateUpdate? listener,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addListenerId,
+          [
+            key,
+            listener,
+          ],
+        ),
+        returnValue: () {},
       ) as _i12.Disposer);
 
   @override
