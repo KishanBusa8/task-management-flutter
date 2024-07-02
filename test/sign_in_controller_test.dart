@@ -22,10 +22,6 @@ void main() {
     String email = 'kishan@gmail.com';
     String password = 'a123123';
     final _loginResponse = loadData('./test/test_data/login_response.json');
-    final Map<String, String> _header = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    };
 
     const channel = MethodChannel('plugins.flutter.io/path_provider');
     void setUpMockChannels(MethodChannel channel) {
@@ -50,18 +46,16 @@ void main() {
           .thenAnswer((a) => TextEditingController(text: password).obs);
     });
 
-    group('login -', () {
-      test('Check if email and password is set or not', () async {
-        expect(signInController.emailTextController.value.text, email);
-        expect(signInController.passwordTextController.value.text, password);
-      });
-      test('When login is called, it should call login api', () async {
-        when(await signInController.login()).thenAnswer((e) async {});
-        await signInController.login();
-        verify(
-          signInController.login(),
-        ).called(1);
-      });
+    test('Check if email and password is set or not', () async {
+      expect(signInController.emailTextController.value.text, email);
+      expect(signInController.passwordTextController.value.text, password);
+    });
+    test('When login is called, it should call login api', () async {
+      when(await signInController.login()).thenAnswer((e) async {});
+      await signInController.login();
+      verify(
+        signInController.login(),
+      ).called(1);
     });
 
     test('When login is called, it should set the user in to global controller',

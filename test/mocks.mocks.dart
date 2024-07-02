@@ -13,12 +13,14 @@ import 'package:get/get_connect/http/src/interceptors/get_modifiers.dart'
 import 'package:get/get_state_manager/src/simple/list_notifier.dart' as _i12;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i4;
+import 'package:task_management/app/data/models/task_model.dart' as _i15;
 import 'package:task_management/app/data/services/apiService/api_services.dart'
     as _i3;
 import 'package:task_management/app/modules/auth/sign_up/sign_up_controller.dart'
     as _i13;
 import 'package:task_management/app/modules/auth/signIn/sign_in_controller.dart'
     as _i10;
+import 'package:task_management/app/modules/home/home_controller.dart' as _i14;
 import 'package:task_management/components/custom_button.dart' as _i11;
 import 'package:task_management/helpers/Utils/common_functions.dart' as _i6;
 
@@ -109,6 +111,26 @@ class _FakeRx_6<T> extends _i1.SmartFake implements _i2.Rx<T> {
 
 class _FakeRxBool_7 extends _i1.SmartFake implements _i2.RxBool {
   _FakeRxBool_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRxList_8<E> extends _i1.SmartFake implements _i2.RxList<E> {
+  _FakeRxList_8(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRxString_9 extends _i1.SmartFake implements _i2.RxString {
+  _FakeRxString_9(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -2439,6 +2461,349 @@ class MockSignUpController extends _i1.Mock implements _i13.SignUpController {
         Invocation.method(
           #onInit,
           [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onReady() => super.noSuchMethod(
+        Invocation.method(
+          #onReady,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onClose() => super.noSuchMethod(
+        Invocation.method(
+          #onClose,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void $configureLifeCycle() => super.noSuchMethod(
+        Invocation.method(
+          #$configureLifeCycle,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i12.Disposer addListener(_i12.GetStateUpdate? listener) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValue: () {},
+      ) as _i12.Disposer);
+
+  @override
+  void removeListener(_i7.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void refresh() => super.noSuchMethod(
+        Invocation.method(
+          #refresh,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void refreshGroup(Object? id) => super.noSuchMethod(
+        Invocation.method(
+          #refreshGroup,
+          [id],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void notifyChildrens() => super.noSuchMethod(
+        Invocation.method(
+          #notifyChildrens,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeListenerId(
+    Object? id,
+    _i7.VoidCallback? listener,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #removeListenerId,
+          [
+            id,
+            listener,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void dispose() => super.noSuchMethod(
+        Invocation.method(
+          #dispose,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i12.Disposer addListenerId(
+    Object? key,
+    _i12.GetStateUpdate? listener,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addListenerId,
+          [
+            key,
+            listener,
+          ],
+        ),
+        returnValue: () {},
+      ) as _i12.Disposer);
+
+  @override
+  void disposeId(Object? id) => super.noSuchMethod(
+        Invocation.method(
+          #disposeId,
+          [id],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
+/// A class which mocks [HomeController].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockHomeController extends _i1.Mock implements _i14.HomeController {
+  MockHomeController() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.RxList<_i15.Task> get tasks => (super.noSuchMethod(
+        Invocation.getter(#tasks),
+        returnValue: _FakeRxList_8<_i15.Task>(
+          this,
+          Invocation.getter(#tasks),
+        ),
+      ) as _i2.RxList<_i15.Task>);
+
+  @override
+  set tasks(_i2.RxList<_i15.Task>? _tasks) => super.noSuchMethod(
+        Invocation.setter(
+          #tasks,
+          _tasks,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.RxList<_i15.Task> get allTasks => (super.noSuchMethod(
+        Invocation.getter(#allTasks),
+        returnValue: _FakeRxList_8<_i15.Task>(
+          this,
+          Invocation.getter(#allTasks),
+        ),
+      ) as _i2.RxList<_i15.Task>);
+
+  @override
+  set allTasks(_i2.RxList<_i15.Task>? _allTasks) => super.noSuchMethod(
+        Invocation.setter(
+          #allTasks,
+          _allTasks,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.RxString get selectedFilter => (super.noSuchMethod(
+        Invocation.getter(#selectedFilter),
+        returnValue: _FakeRxString_9(
+          this,
+          Invocation.getter(#selectedFilter),
+        ),
+      ) as _i2.RxString);
+
+  @override
+  set selectedFilter(_i2.RxString? _selectedFilter) => super.noSuchMethod(
+        Invocation.setter(
+          #selectedFilter,
+          _selectedFilter,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.InternalFinalCallback<void> get onStart => (super.noSuchMethod(
+        Invocation.getter(#onStart),
+        returnValue: _FakeInternalFinalCallback_2<void>(
+          this,
+          Invocation.getter(#onStart),
+        ),
+      ) as _i2.InternalFinalCallback<void>);
+
+  @override
+  _i2.InternalFinalCallback<void> get onDelete => (super.noSuchMethod(
+        Invocation.getter(#onDelete),
+        returnValue: _FakeInternalFinalCallback_2<void>(
+          this,
+          Invocation.getter(#onDelete),
+        ),
+      ) as _i2.InternalFinalCallback<void>);
+
+  @override
+  bool get initialized => (super.noSuchMethod(
+        Invocation.getter(#initialized),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  bool get isClosed => (super.noSuchMethod(
+        Invocation.getter(#isClosed),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  bool get hasListeners => (super.noSuchMethod(
+        Invocation.getter(#hasListeners),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  int get listeners => (super.noSuchMethod(
+        Invocation.getter(#listeners),
+        returnValue: 0,
+      ) as int);
+
+  @override
+  void onInit() => super.noSuchMethod(
+        Invocation.method(
+          #onInit,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  int checkDoneTask() => (super.noSuchMethod(
+        Invocation.method(
+          #checkDoneTask,
+          [],
+        ),
+        returnValue: 0,
+      ) as int);
+
+  @override
+  void filterTask() => super.noSuchMethod(
+        Invocation.method(
+          #filterTask,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  String getStatus() => (super.noSuchMethod(
+        Invocation.method(
+          #getStatus,
+          [],
+        ),
+        returnValue: _i4.dummyValue<String>(
+          this,
+          Invocation.method(
+            #getStatus,
+            [],
+          ),
+        ),
+      ) as String);
+
+  @override
+  _i5.Future<void> getAllTask() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllTask,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> deleteTaskById(String? id) => (super.noSuchMethod(
+        Invocation.method(
+          #deleteTaskById,
+          [id],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> createTask(_i15.Task? task) => (super.noSuchMethod(
+        Invocation.method(
+          #createTask,
+          [task],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> updateTaskById(
+    String? id,
+    _i15.Task? task,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateTaskById,
+          [
+            id,
+            task,
+          ],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> deleteAllTask() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteAllTask,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  void update([
+    List<Object>? ids,
+    bool? condition = true,
+  ]) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #update,
+          [
+            ids,
+            condition,
+          ],
         ),
         returnValueForMissingStub: null,
       );

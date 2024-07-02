@@ -58,6 +58,12 @@ static const String baseUrl = 'http://127.0.0.1:8000/';
 flutter run
 ```
 
+## Run Test Cases:
+```
+flutter test
+```
+
+
 ## App Features:
 
 * Splash

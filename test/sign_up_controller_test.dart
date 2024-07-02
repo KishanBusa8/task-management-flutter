@@ -16,17 +16,13 @@ import 'test_data/test_data_loader.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  group('signInControllerTest -', () {
+  group('signUpControllerTest -', () {
     late MockSignUpController signUpController;
     late GlobalController globalController;
     String email = 'kishan@gmail.com';
     String password = 'a123123';
     String name = 'Kishan Busa';
     final _loginResponse = loadData('./test/test_data/login_response.json');
-    final Map<String, String> _header = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    };
 
     const channel = MethodChannel('plugins.flutter.io/path_provider');
     void setUpMockChannels(MethodChannel channel) {
@@ -53,21 +49,18 @@ void main() {
           .thenAnswer((a) => TextEditingController(text: name).obs);
     });
 
-    group('SignUp -', () {
-      test('Check if email and password is set or not', () async {
-        expect(signUpController.emailTextController.value.text, email);
-        expect(signUpController.passwordTextController.value.text, password);
-        expect(signUpController.nameTextController.value.text, name);
-      });
-      test('When SignUp is called, it should call SignUp api', () async {
-        when(await signUpController.signUp()).thenAnswer((e) async {});
-        await signUpController.signUp();
-        verify(
-          signUpController.signUp(),
-        ).called(1);
-      });
+    test('Check if email and password is set or not', () async {
+      expect(signUpController.emailTextController.value.text, email);
+      expect(signUpController.passwordTextController.value.text, password);
+      expect(signUpController.nameTextController.value.text, name);
     });
-
+    test('When SignUp is called, it should call SignUp api', () async {
+      when(await signUpController.signUp()).thenAnswer((e) async {});
+      await signUpController.signUp();
+      verify(
+        signUpController.signUp(),
+      ).called(1);
+    });
     test(
         'When SignUp is called, it should set the user in to global controller',
         () async {
