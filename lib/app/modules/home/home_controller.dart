@@ -158,4 +158,22 @@ class HomeController extends GetxController {
       CommonFunctions().showSnackBar(message: 'Something went wrong!');
     }
   }
+
+  Future<void> deleteAllTask() async {
+    CommonFunctions().showLoadingDialog();
+    try {
+      final Response response = await _apiService.makeApiCall(
+        ApiConstants.todos,
+        ApiMethodType.delete,
+      );
+      Get.back();
+      if (response.statusCode == 200) {
+        allTasks.value = [];
+        tasks.value = [];
+        CommonFunctions().showSnackBar(message: response.body['message'] ?? '');
+      }
+    } catch (e) {
+      CommonFunctions().showSnackBar(message: 'Something went wrong!');
+    }
+  }
 }

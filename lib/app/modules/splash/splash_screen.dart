@@ -1,8 +1,13 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:lottie/lottie.dart';
 import 'package:task_management/app/routes/pages.dart';
+import 'package:task_management/helpers/constants/image_constants.dart';
 import 'package:task_management/helpers/constants/storage_constants.dart';
+import 'package:task_management/helpers/schema/color_schema.dart';
+import 'package:task_management/helpers/schema/text_styles.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     //if Subscription then add below Function.
-    Future.delayed(const Duration(seconds: 2)).then((value) async {
+    Future.delayed(const Duration(seconds: 3)).then((value) async {
       checkUserLogin();
     });
   }
@@ -38,15 +43,26 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: ColorSchema.background(),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: Text(
-                "SplashScreen",
-                style: TextStyle(color: Colors.black, fontSize: 20),
+                "Todo App",
+                style: CustomTextStyle.heading2(),
+              ),
+            ),
+            FadeIn(
+              child: SizedBox(
+                width: 200,
+                height: 200,
+                child: Lottie.asset(
+                  ImageConstants.splashLottieUrl,
+                  animate: true,
+                ),
               ),
             ),
           ],

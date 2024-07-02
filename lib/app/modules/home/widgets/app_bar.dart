@@ -89,7 +89,9 @@ class _MyAppBarState extends State<MyAppBar>
                 onTap: () {
                   _controller.tasks.value.isEmpty
                       ? CommonFunctions().warningNoTask()
-                      : CommonFunctions().deleteAllTask(onDelete: () {});
+                      : CommonFunctions().deleteAllTask(onDelete: () {
+                          _controller.deleteAllTask();
+                        });
                 },
                 child: const Icon(
                   CupertinoIcons.trash,

@@ -85,5 +85,18 @@ const deleteTodo = async (req, res, next) => {
     });
   }
 };
+const deleteAllTodos = async (req, res, next) => {
+  try {
+    const deletedTodo = await Todo.deleteMany({});
+    if (!deletedTodo) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Task not found!');
+    }
+    return res.status(httpStatus.OK).json({ message: 'Tasks deleted successfully' });
+  } catch (error) {
+    res.status(error.statusCode ?? httpStatus.BAD_REQUEST).send({
+      error: error.message ?? error
+    });
+  }
+};
 
-export { createTodo, getTodos, getTodoById, updateTodo, deleteTodo };
+export { createTodo, getTodos, getTodoById, updateTodo, deleteTodo, deleteAllTodos };
