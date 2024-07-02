@@ -41,7 +41,7 @@ npm start
 ```
 
 **Step 2:**
-Change Base url in api_constants.dart file
+Change Base url to your backend url in api_constants.dart file
 
 ```
 static const String baseUrl = 'http://127.0.0.1:8000/';
