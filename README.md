@@ -32,16 +32,24 @@ npm install
 
 ## How to Run
 
+
+
 **Step 1:**
-
-```
-flutter run 
-```
-
-**Step 2:**
 Go to project root/backend 
 ```
 npm start 
+```
+
+**Step 2:**
+Change Base url in api_constants.dart file
+
+```
+static const String baseUrl = 'http://127.0.0.1:8000/';
+```
+
+**Step 3:**
+```
+flutter run
 ```
 
 ## App Features:
