@@ -1,4 +1,4 @@
-# APP
+# Task Management APP
 Task management App : Simple task management app with backend in node js.
 
 ## Getting Started
@@ -28,6 +28,20 @@ Go to project root/backend and execute the following command in console to get t
 [node version is 20+]
 ```
 npm install
+```
+
+## How to Run
+
+**Step 1:**
+
+```
+flutter run 
+```
+
+**Step 2:**
+Go to project root/backend 
+```
+npm start 
 ```
 
 ## App Features:
