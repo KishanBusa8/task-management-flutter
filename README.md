@@ -30,9 +30,15 @@ Go to project root/backend and execute the following command in console to get t
 npm install
 ```
 
+**Step 3:**
+
+This project uses `mockito` library that works with code generation, execute the following command to generate files:
+
+```
+flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+
 ## How to Run
-
-
 
 **Step 1:**
 Go to project root/backend 
@@ -89,6 +95,7 @@ flutter run
 * [panara_dialogs](https://pub.dev/packages/panara_dialogs) => To show beautiful error or info dialogs
 * [ftoast](https://pub.dev/packages/ftoast) => To show beautiful error or info toasts
 * [flutter_slider_drawer](https://pub.dev/packages/flutter_slider_drawer) => Used for slide drawer
+* [mockito](https://pub.dev/packages/mockito) => Used for test cases
 
 **Node**
 * [bcryptjs](https://pub.dev/packages/get) => For has encrypt password
