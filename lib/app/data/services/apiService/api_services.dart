@@ -15,6 +15,10 @@ class ApiMethodType {
 }
 
 class ApiService extends GetConnect {
+  Future<Response> getData() {
+    return get('https://jsonplaceholder.typicode.com/posts');
+  }
+
   Future<Response> makeApiCall(
     String baseUrl,
     String method, {
