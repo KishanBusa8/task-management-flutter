@@ -80,6 +80,7 @@ class _MyAppBarState extends State<MyAppBar>
                   icon: AnimatedIcon(
                     icon: AnimatedIcons.menu_close,
                     progress: controller,
+                    color: ColorSchema().universalSwap(),
                     size: 40,
                   ),
                   onPressed: toggle,
@@ -97,9 +98,10 @@ class _MyAppBarState extends State<MyAppBar>
                             _controller.deleteAllTask();
                           });
                   },
-                  child: const Icon(
+                  child: Icon(
                     CupertinoIcons.trash,
                     size: 40,
+                    color: ColorSchema().universalSwap(),
                   ),
                 ),
               ),

@@ -108,7 +108,10 @@ class HomeScreen extends StatelessWidget {
                         .map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child: Text(
+                          value,
+                          style: CustomTextStyle.body2(),
+                        ),
                       );
                     }).toList(),
                     onChanged: (s) {
@@ -200,7 +203,10 @@ class HomeScreen extends StatelessWidget {
                         /// Bottom Texts
                         FadeInUp(
                           from: 30,
-                          child: const Text(MyString.doneAllTask),
+                          child: Text(
+                            MyString.doneAllTask,
+                            style: CustomTextStyle.body2(),
+                          ),
                         ),
                       ],
                     ),

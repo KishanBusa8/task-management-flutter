@@ -47,7 +47,7 @@ class SignUpController extends GetxController {
       },
     );
     loading.value = false;
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       _globalController.user.value = User.fromJson(response.body['user']);
       await GetStorage().write(StorageConstants.token, response.body['token']);
       await GetStorage().write(
@@ -58,7 +58,7 @@ class SignUpController extends GetxController {
       Get.offAllNamed(Routes.homeScreen);
     } else {
       CommonFunctions().showSnackBar(
-        message: 'Invalid email or password',
+        message: response.body['error'] ?? 'Something went wrong',
         backgroundColor: Colors.red,
       );
     }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:task_management/app/data/services/global/global_controller.dart';
 import 'package:task_management/app/data/services/global/theme_controller.dart';
+import 'package:task_management/app/routes/pages.dart';
 import 'package:task_management/helpers/schema/color_schema.dart';
 import 'package:task_management/helpers/schema/text_styles.dart';
 
@@ -15,10 +17,10 @@ class MySlider extends StatelessWidget {
   final ThemeController _themeController = Get.find();
 
   /// Icons
-  List<IconData> icons = [];
+  List<IconData> icons = [Icons.logout];
 
   /// Texts
-  List<String> texts = [];
+  List<String> texts = ['Logout'];
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class MySlider extends StatelessWidget {
                 onPressed: () {
                   _themeController.toggleTheme();
                 },
+                color: ColorSchema().universalSwap(),
                 icon: _themeController.isDarkMode.value
                     ? const Icon(Icons.light_mode)
                     : const Icon(
@@ -59,9 +62,9 @@ class MySlider extends StatelessWidget {
             height: 8,
           ),
           Text(_globalController.user.value.name ?? "AmirHossein Bayat",
-              style: CustomTextStyle.heading()),
+              style: CustomTextStyle.heading().copyWith(color: Colors.white)),
           Text(_globalController.user.value.email ?? "junior flutter dev",
-              style: CustomTextStyle.heading()),
+              style: CustomTextStyle.heading().copyWith(color: Colors.white)),
           Container(
             margin: const EdgeInsets.symmetric(
               vertical: 30,
@@ -75,7 +78,12 @@ class MySlider extends StatelessWidget {
                 itemBuilder: (ctx, i) {
                   return InkWell(
                     // ignore: avoid_print
-                    onTap: () => print("$i Selected"),
+                    onTap: () {
+                      if (i == 0) {
+                        GetStorage().erase();
+                        Get.offAllNamed(Routes.signIn);
+                      }
+                    },
                     child: Container(
                       margin: const EdgeInsets.all(5),
                       child: ListTile(
