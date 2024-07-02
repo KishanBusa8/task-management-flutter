@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_management/app/modules/auth/sign_up/sign_up_controller.dart';
 import 'package:task_management/app/routes/pages.dart';
+import 'package:task_management/components/base_widget.dart';
 import 'package:task_management/components/custom_button.dart';
 import 'package:task_management/components/custom_text_fIeld.dart';
 import 'package:task_management/components/divider_with_text.dart';
@@ -16,8 +17,7 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorSchema.background(),
+    return BaseWidget(
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -91,7 +91,7 @@ class SignUp extends StatelessWidget {
                         !_signUpController.passwordVisible.value
                             ? Icons.remove_red_eye_rounded
                             : Icons.remove_red_eye_sharp,
-                        color: ColorSchema.midGray3(),
+                        color: ColorSchema().midGray3(),
                       ),
                       onPressed: () {
                         _signUpController.passwordVisible.value =
@@ -143,8 +143,8 @@ class SignUp extends StatelessWidget {
                           onTap: () {
                             Get.offAllNamed(Routes.signIn);
                           },
-                          backgroundColor: ColorSchema.universalSwap(),
-                          titleColor: ColorSchema.background(),
+                          backgroundColor: ColorSchema().universalSwap(),
+                          titleColor: ColorSchema().background(),
                           title: 'LOGIN',
                           buttonType: ButtonType.enable,
                         ),

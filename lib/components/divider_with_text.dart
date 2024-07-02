@@ -14,7 +14,7 @@ class DividerWithText extends StatelessWidget {
         Expanded(
           child: Container(
             height: 1,
-            color: ColorSchema.lightGray(),
+            color: ColorSchema().lightGray(),
           ),
         ),
         Padding(
@@ -22,13 +22,13 @@ class DividerWithText extends StatelessWidget {
           child: Text(
             text,
             style: CustomTextStyle.textFiled()
-                .copyWith(color: ColorSchema.midGray3()),
+                .copyWith(color: ColorSchema().midGray3()),
           ),
         ),
         Expanded(
           child: Container(
             height: 1,
-            color: ColorSchema.lightGray(),
+            color: ColorSchema().lightGray(),
           ),
         ),
       ],

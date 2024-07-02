@@ -28,7 +28,7 @@ class FAB extends StatelessWidget {
           width: 70,
           height: 70,
           decoration: BoxDecoration(
-            color: ColorSchema.primary(),
+            color: ColorSchema().primary(),
             borderRadius: BorderRadius.circular(15),
           ),
           child: const Center(

@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_management/app/data/services/global/global_controller.dart';
+import 'package:task_management/app/data/services/global/theme_controller.dart';
 import 'package:task_management/helpers/schema/color_schema.dart';
 import 'package:task_management/helpers/schema/text_styles.dart';
 
@@ -12,27 +12,18 @@ class MySlider extends StatelessWidget {
   }) : super(key: key);
 
   final GlobalController _globalController = Get.find();
+  final ThemeController _themeController = Get.find();
 
   /// Icons
-  List<IconData> icons = [
-    CupertinoIcons.home,
-    CupertinoIcons.person_fill,
-    CupertinoIcons.settings,
-    CupertinoIcons.info_circle_fill,
-  ];
+  List<IconData> icons = [];
 
   /// Texts
-  List<String> texts = [
-    "Home",
-    "Profile",
-    "Settings",
-    "Details",
-  ];
+  List<String> texts = [];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 90),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -45,6 +36,21 @@ class MySlider extends StatelessWidget {
       ),
       child: Column(
         children: [
+          Obx(() {
+            return Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                onPressed: () {
+                  _themeController.toggleTheme();
+                },
+                icon: _themeController.isDarkMode.value
+                    ? const Icon(Icons.light_mode)
+                    : const Icon(
+                        Icons.dark_mode,
+                      ),
+              ),
+            );
+          }),
           const CircleAvatar(
             radius: 50,
             backgroundImage: AssetImage('assets/img/1.png'),

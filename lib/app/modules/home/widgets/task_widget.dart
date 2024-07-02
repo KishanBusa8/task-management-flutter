@@ -43,12 +43,12 @@ class TaskWidget extends StatelessWidget {
                 ? const Color.fromARGB(154, 119, 144, 229)
                 : task.value.status == TaskStatus.inProgress.name
                     ? Colors.pinkAccent.shade100
-                    : Colors.white,
+                    : ColorSchema().boxModal(),
             borderRadius: BorderRadius.circular(8),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(.1),
-                offset: const Offset(0, 4),
+                color: Colors.black.withOpacity(.3),
+                offset: const Offset(0, 5),
                 blurRadius: 10,
               )
             ],
@@ -95,7 +95,7 @@ class TaskWidget extends StatelessWidget {
                         style: TextStyle(
                           color: task.value.status == TaskStatus.done.name
                               ? SingleColor.primary
-                              : Colors.black,
+                              : ColorSchema().universalSwap(),
                           fontWeight: FontWeight.w500,
                           decoration: task.value.status == TaskStatus.done.name
                               ? TextDecoration.lineThrough
@@ -108,7 +108,7 @@ class TaskWidget extends StatelessWidget {
                       style: TextStyle(
                         color: task.value.status == TaskStatus.done.name
                             ? SingleColor.primary
-                            : Colors.black,
+                            : ColorSchema().universalSwap(),
                         fontWeight: FontWeight.w500,
                         decoration: task.value.status == TaskStatus.done.name
                             ? TextDecoration.lineThrough

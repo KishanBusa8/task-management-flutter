@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:get/get.dart';
+import 'package:task_management/app/data/services/global/theme_controller.dart';
 import 'package:task_management/app/modules/home/home_controller.dart';
 import 'package:task_management/helpers/Utils/common_functions.dart';
+import 'package:task_management/helpers/schema/color_schema.dart';
 
 /// My App Bar
 class MyAppBar extends StatefulWidget {
@@ -58,50 +60,53 @@ class _MyAppBarState extends State<MyAppBar>
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 100,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            /// Animated Icon - Menu & Close
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: IconButton(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                icon: AnimatedIcon(
-                  icon: AnimatedIcons.menu_close,
-                  progress: controller,
-                  size: 40,
+    return GetBuilder<ThemeController>(builder: (logic) {
+      return Container(
+        color: ColorSchema().background(),
+        width: double.infinity,
+        height: 100,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              /// Animated Icon - Menu & Close
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: IconButton(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  icon: AnimatedIcon(
+                    icon: AnimatedIcons.menu_close,
+                    progress: controller,
+                    size: 40,
+                  ),
+                  onPressed: toggle,
                 ),
-                onPressed: toggle,
               ),
-            ),
 
-            /// Delete Icon
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: GestureDetector(
-                onTap: () {
-                  _controller.tasks.value.isEmpty
-                      ? CommonFunctions().warningNoTask()
-                      : CommonFunctions().deleteAllTask(onDelete: () {
-                          _controller.deleteAllTask();
-                        });
-                },
-                child: const Icon(
-                  CupertinoIcons.trash,
-                  size: 40,
+              /// Delete Icon
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: GestureDetector(
+                  onTap: () {
+                    _controller.tasks.value.isEmpty
+                        ? CommonFunctions().warningNoTask()
+                        : CommonFunctions().deleteAllTask(onDelete: () {
+                            _controller.deleteAllTask();
+                          });
+                  },
+                  child: const Icon(
+                    CupertinoIcons.trash,
+                    size: 40,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:task_management/app/data/models/task_model.dart';
 import 'package:task_management/app/modules/home/home_controller.dart';
+import 'package:task_management/components/base_widget.dart';
 import 'package:task_management/helpers/Utils/common_functions.dart';
 import 'package:task_management/helpers/Utils/string.dart';
 import 'package:task_management/helpers/schema/color_schema.dart';
@@ -154,55 +155,56 @@ class _TaskViewState extends State<TaskView> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(120),
-          child: SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: const Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        size: 50,
+    return BaseWidget(
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(120),
+            child: SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: const Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          size: 50,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: Center(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  /// new / update Task Text
-                  _buildTopText(),
+          body: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Center(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    /// new / update Task Text
+                    _buildTopText(),
 
-                  /// Middle Two TextFileds, Time And Date Selection Box
-                  _buildMiddleTextFieldsANDTimeAndDateSelection(),
+                    /// Middle Two TextFileds, Time And Date Selection Box
+                    _buildMiddleTextFieldsANDTimeAndDateSelection(),
 
-                  /// All Bottom Buttons
-                  _buildBottomButtons(context),
-                ],
+                    /// All Bottom Buttons
+                    _buildBottomButtons(context),
+                  ],
+                ),
               ),
             ),
           ),
@@ -312,7 +314,7 @@ class _TaskViewState extends State<TaskView> {
                 controller: widget.taskControllerForTitle,
                 maxLines: 2,
                 style: TextStyle(
-                  color: ColorSchema.universalSwap(),
+                  color: ColorSchema().universalSwap(),
                   fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
@@ -384,7 +386,7 @@ class _TaskViewState extends State<TaskView> {
               width: double.infinity,
               height: 55,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorSchema().boxModal(),
                 border: Border.all(color: Colors.grey.shade300, width: 1),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -404,11 +406,13 @@ class _TaskViewState extends State<TaskView> {
                     height: 35,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey.shade100),
+                        color: Colors.grey.shade500),
                     child: Center(
                       child: Text(
                         showTime(time),
-                        style: CustomTextStyle.body2(),
+                        style: CustomTextStyle.body2().copyWith(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   )
@@ -441,7 +445,7 @@ class _TaskViewState extends State<TaskView> {
               width: double.infinity,
               height: 55,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorSchema().boxModal(),
                 border: Border.all(color: Colors.grey.shade300, width: 1),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -459,11 +463,13 @@ class _TaskViewState extends State<TaskView> {
                     height: 35,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey.shade100),
+                        color: Colors.grey.shade500),
                     child: Center(
                       child: Text(
                         showDate(date),
-                        style: CustomTextStyle.body2(),
+                        style: CustomTextStyle.body2().copyWith(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   )
@@ -479,7 +485,7 @@ class _TaskViewState extends State<TaskView> {
               width: double.infinity,
               height: 55,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorSchema().boxModal(),
                 border: Border.all(color: Colors.grey.shade300, width: 1),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -500,7 +506,10 @@ class _TaskViewState extends State<TaskView> {
                     ].map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child: Text(
+                          value,
+                          style: CustomTextStyle.body2(),
+                        ),
                       );
                     }).toList(),
                     onChanged: (s) {

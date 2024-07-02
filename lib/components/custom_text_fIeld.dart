@@ -44,7 +44,7 @@ class CustomTextField extends StatelessWidget {
         //     TextSpan(
         //       text: nameText,
         //       style: CustomTextStyle.textFiled()
-        //           .copyWith(color: ColorSchema.darkGray()),
+        //           .copyWith(color: ColorSchema().darkGray()),
         //       children: <InlineSpan>[],
         //     ),
         //   ),
@@ -53,7 +53,7 @@ class CustomTextField extends StatelessWidget {
         ),
         TextFormField(
           controller: textEditingController,
-          cursorColor: ColorSchema.universalSwap(),
+          cursorColor: ColorSchema().universalSwap(),
           enabled: enable,
           style: CustomTextStyle.textFiled(),
           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -71,13 +71,13 @@ class CustomTextField extends StatelessWidget {
             errorStyle: CustomTextStyle.textFiled()
                 .copyWith(color: SingleColor.colorRed),
             hintStyle: CustomTextStyle.textFiled()
-                .copyWith(color: ColorSchema.darkGray()),
+                .copyWith(color: ColorSchema().darkGray()),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: ColorSchema.universalSwap()),
+              borderSide: BorderSide(color: ColorSchema().universalSwap()),
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: ColorSchema.midGray1()),
+              borderSide: BorderSide(color: ColorSchema().midGray1()),
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(

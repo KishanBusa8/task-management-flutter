@@ -52,19 +52,19 @@ class CustomButton extends StatelessWidget {
           break;
         case ButtonType.disable:
           {
-            background = ColorSchema.lightGray();
+            background = ColorSchema().lightGray();
             textColor = titleColor ?? Colors.grey.withOpacity(0.5);
           }
           break;
         case ButtonType.outline:
           {
-            background = ColorSchema.background();
+            background = ColorSchema().background();
             textColor = titleColor ?? Colors.white;
           }
           break;
         case ButtonType.progress:
           {
-            background = ColorSchema.lightGray();
+            background = ColorSchema().lightGray();
           }
           break;
       }

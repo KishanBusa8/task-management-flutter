@@ -136,6 +136,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:task_management/helpers/constants/storage_constants.dart';
@@ -147,12 +148,27 @@ class ThemeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    isDarkMode.value = storage.read(StorageConstants.isDarkMode) ?? false;
+    isDarkMode.value = storage.read(StorageConstants.isDarkMode) ?? true;
   }
 
   Future<void> toggleTheme() async {
     isDarkMode.value = !isDarkMode.value;
     await storage.write(StorageConstants.isDarkMode, isDarkMode.value);
+    if (isDarkMode.value) {
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+        ),
+      );
+    } else {
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+        ),
+      );
+    }
     update();
   }
 

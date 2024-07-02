@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:lottie/lottie.dart';
 import 'package:task_management/app/routes/pages.dart';
+import 'package:task_management/components/base_widget.dart';
 import 'package:task_management/helpers/constants/image_constants.dart';
 import 'package:task_management/helpers/constants/storage_constants.dart';
-import 'package:task_management/helpers/schema/color_schema.dart';
 import 'package:task_management/helpers/schema/text_styles.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -43,8 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorSchema.background(),
+    return BaseWidget(
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

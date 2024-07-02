@@ -1,67 +1,58 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// Package imports:
-import 'package:get_storage/get_storage.dart';
-import 'package:task_management/helpers/constants/storage_constants.dart';
+import 'package:get/get.dart';
+import 'package:task_management/app/data/services/global/theme_controller.dart';
 
 class ColorSchema {
-  static GetStorage storage = GetStorage();
-
-  static bool isDarkTheme() {
-    if (storage.read(StorageConstants.customBrightness) == "light") {
-      return false;
-    } else if (storage.read(StorageConstants.customBrightness) == "dark") {
-      return true;
-    } else {
-      // return MediaQuery.of(Get.context!).platformBrightness == Brightness.dark;
-      return false;
-    }
+  final ThemeController _themeController = Get.find();
+  bool isDarkTheme() {
+    return _themeController.isDarkMode.value;
   }
 
-  static Brightness keyboard() {
+  Brightness keyboard() {
     return isDarkTheme() ? Brightness.dark : Brightness.light;
   }
 
-  static SystemUiOverlayStyle statusBar() {
+  SystemUiOverlayStyle statusBar() {
     return isDarkTheme()
         ? SystemUiOverlayStyle.light
         : SystemUiOverlayStyle.dark;
   }
 
-  static Color primary() {
+  Color primary() {
     return isDarkTheme() ? DarkTheme.primary : LightTheme.primary;
   }
 
-  static Color background() {
+  Color background() {
     return isDarkTheme() ? DarkTheme.background : LightTheme.background;
   }
 
-  static Color universalSwap() {
+  Color universalSwap() {
     return !isDarkTheme() ? DarkTheme.background : LightTheme.background;
   }
 
-  static Color midGray3() {
+  Color midGray3() {
     return !isDarkTheme() ? DarkTheme.midGray3 : LightTheme.midGray3;
   }
 
-  static Color midGray2() {
+  Color midGray2() {
     return !isDarkTheme() ? DarkTheme.midGray2 : LightTheme.midGray2;
   }
 
-  static Color midGray1() {
+  Color midGray1() {
     return !isDarkTheme() ? DarkTheme.midGray1 : LightTheme.midGray1;
   }
 
-  static Color darkGray() {
+  Color darkGray() {
     return !isDarkTheme() ? DarkTheme.darkGray : LightTheme.darkGray;
   }
 
-  static Color lightGray() {
+  Color lightGray() {
     return !isDarkTheme() ? DarkTheme.lightGray : LightTheme.lightGray;
   }
 
-  static Color boxModal() {
+  Color boxModal() {
     return isDarkTheme() ? DarkTheme.ultraDarkGray : LightTheme.boxModal;
   }
 }

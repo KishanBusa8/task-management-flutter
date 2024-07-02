@@ -101,11 +101,14 @@ class CommonFunctions {
   }
 
   void showSnackBar({Color? backgroundColor, required String message}) {
-    final Color background = backgroundColor ?? ColorSchema.universalSwap();
+    final Color background = backgroundColor ?? ColorSchema().universalSwap();
     Get.closeAllSnackbars();
     Get.showSnackbar(
       GetSnackBar(
-        message: message,
+        messageText: Text(
+          message,
+          style: TextStyle(color: ColorSchema().background()),
+        ),
         backgroundColor: background,
         duration: const Duration(milliseconds: 2300),
       ),

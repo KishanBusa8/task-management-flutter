@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:task_management/app/data/services/global/theme_controller.dart';
 import 'package:task_management/app/modules/home/home_controller.dart';
 import 'package:task_management/app/modules/home/widgets/add_button.dart';
 import 'package:task_management/app/modules/home/widgets/app_bar.dart';
@@ -19,33 +20,34 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorSchema.background(),
-      floatingActionButton: const FAB(),
-      body: SliderDrawer(
-        isDraggable: false,
-        key: dKey,
-        animationDuration: 1000,
+    return GetBuilder<ThemeController>(builder: (logic) {
+      return Scaffold(
+        backgroundColor: ColorSchema().background(),
+        floatingActionButton: const FAB(),
+        body: SliderDrawer(
+          isDraggable: false,
+          key: dKey,
+          animationDuration: 1000,
 
-        /// My AppBar
-        appBar: MyAppBar(
-          drawerKey: dKey,
-        ),
+          /// My AppBar
+          appBar: MyAppBar(
+            drawerKey: dKey,
+          ),
 
-        /// My Drawer Slider
-        slider: MySlider(),
+          /// My Drawer Slider
+          slider: MySlider(),
 
-        /// Main Body
-        child: SafeArea(
+          /// Main Body
           child: _buildBody(),
         ),
-      ),
-    );
+      );
+    });
   }
 
   /// Main Body
-  SizedBox _buildBody() {
-    return SizedBox(
+  Container _buildBody() {
+    return Container(
+      color: ColorSchema().background(),
       width: double.infinity,
       height: double.infinity,
       child: Column(

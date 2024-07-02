@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:task_management/helpers/constants/storage_constants.dart';
 import 'package:task_management/helpers/schema/color_schema.dart';
 
 enum FontFamily { Poppins, JosefinSans }
@@ -9,62 +7,58 @@ enum FontFamily { Poppins, JosefinSans }
 class CustomTextStyle {
   static GetStorage storage = GetStorage();
 
-  static bool isDarkTheme() {
-    if (storage.read(StorageConstants.customBrightness) == "light") {
-      return false;
-    } else if (storage.read(StorageConstants.customBrightness) == "dark") {
-      return true;
-    } else {
-      return MediaQuery.of(Get.context!).platformBrightness == Brightness.dark;
-    }
-  }
-
   static TextStyle title() {
-    return ThemeTextStyles().title.copyWith(color: ColorSchema.universalSwap());
+    return ThemeTextStyles()
+        .title
+        .copyWith(color: ColorSchema().universalSwap());
   }
 
   static TextStyle small() {
-    return ThemeTextStyles().small.copyWith(color: ColorSchema.universalSwap());
+    return ThemeTextStyles()
+        .small
+        .copyWith(color: ColorSchema().universalSwap());
   }
 
   static TextStyle appbar() {
     return ThemeTextStyles()
         .appbar
-        .copyWith(color: ColorSchema.universalSwap());
+        .copyWith(color: ColorSchema().universalSwap());
   }
 
   static TextStyle heading() {
     return ThemeTextStyles()
         .heading
-        .copyWith(color: ColorSchema.universalSwap());
+        .copyWith(color: ColorSchema().universalSwap());
   }
 
   static TextStyle subHeading() {
     return ThemeTextStyles()
         .subHeading
-        .copyWith(color: ColorSchema.universalSwap());
+        .copyWith(color: ColorSchema().universalSwap());
   }
 
   static TextStyle button() {
     return ThemeTextStyles()
         .button
-        .copyWith(color: ColorSchema.universalSwap());
+        .copyWith(color: ColorSchema().universalSwap());
   }
 
   static TextStyle textFiled() {
     return ThemeTextStyles()
         .textField
-        .copyWith(color: ColorSchema.universalSwap());
+        .copyWith(color: ColorSchema().universalSwap());
   }
 
   static TextStyle body2() {
-    return ThemeTextStyles().body2.copyWith(color: ColorSchema.universalSwap());
+    return ThemeTextStyles()
+        .body2
+        .copyWith(color: ColorSchema().universalSwap());
   }
 
   static TextStyle heading2() {
     return ThemeTextStyles()
         .heading2
-        .copyWith(color: ColorSchema.universalSwap());
+        .copyWith(color: ColorSchema().universalSwap());
   }
 }
 
