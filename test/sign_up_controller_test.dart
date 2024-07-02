@@ -53,13 +53,13 @@ void main() {
           .thenAnswer((a) => TextEditingController(text: name).obs);
     });
 
-    group('login -', () {
+    group('SignUp -', () {
       test('Check if email and password is set or not', () async {
         expect(signUpController.emailTextController.value.text, email);
         expect(signUpController.passwordTextController.value.text, password);
         expect(signUpController.nameTextController.value.text, name);
       });
-      test('When login is called, it should call login api', () async {
+      test('When SignUp is called, it should call SignUp api', () async {
         when(await signUpController.signUp()).thenAnswer((e) async {});
         await signUpController.signUp();
         verify(
@@ -68,7 +68,8 @@ void main() {
       });
     });
 
-    test('When login is called, it should set the user in to global controller',
+    test(
+        'When SignUp is called, it should set the user in to global controller',
         () async {
       when(await signUpController.signUp()).thenAnswer((e) async {
         globalController.user.value = User.fromJson(_loginResponse['user']);
@@ -80,7 +81,8 @@ void main() {
       expect(globalController.user.value.email, email);
     });
 
-    test('When login is called, it should set the user in to global controller',
+    test(
+        'When SignUp is called, it should set the user in to global controller',
         () async {
       when(await signUpController.signUp()).thenAnswer((e) async {
         globalController.user.value = User.fromJson(_loginResponse['user']);
