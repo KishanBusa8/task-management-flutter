@@ -146,7 +146,6 @@ class HomeController extends GetxController {
       Get.back();
 
       if (response.statusCode == 200) {
-        CommonFunctions().showSnackBar(message: 'Task Updated successfully');
         getAllTask();
       } else {
         CommonFunctions().showSnackBar(
