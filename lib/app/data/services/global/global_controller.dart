@@ -24,13 +24,16 @@ class GlobalController extends GetxService {
   @override
   void onInit() {
     user.value = getUser();
+    if (user.value.sId != null) {
+      getUserFromApi();
+    }
     super.onInit();
   }
 
   User getUser() {
-    if (GetStorage().read(StorageConstants.store) != null) {
+    if (GetStorage().read(StorageConstants.user) != null) {
       return User.fromJson(
-          jsonDecode(GetStorage().read(StorageConstants.store)));
+          jsonDecode(GetStorage().read(StorageConstants.user)));
     } else {
       return User();
     }
@@ -44,7 +47,7 @@ class GlobalController extends GetxService {
     if (response.statusCode == 200) {
       user.value = User.fromJson(response.body['user']);
       await GetStorage()
-          .write(StorageConstants.store, jsonEncode(user.toJson()));
+          .write(StorageConstants.user, jsonEncode(user.toJson()));
     }
   }
 }

@@ -5,13 +5,12 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:task_management/app/data/services/global/global_controller.dart';
 import 'package:task_management/app/data/services/global/theme_controller.dart';
+import 'package:task_management/app/modules/splash/splash_screen.dart';
 import 'package:task_management/app/routes/pages.dart';
 import 'package:task_management/helpers/Translation/translation.dart';
 import 'package:task_management/helpers/constants/storage_constants.dart';
 import 'package:task_management/helpers/get_lazy_put.dart' as lazy_put;
 import 'package:task_management/helpers/schema/color_schema.dart';
-import 'package:task_management/helpers/schema/color_schema.dart';
-import 'package:task_management/helpers/schema/text_styles.dart';
 import 'package:task_management/helpers/schema/text_styles.dart';
 
 Future<void> main() async {
@@ -55,8 +54,7 @@ class MyApp extends StatelessWidget {
         title: 'Task Management',
         locale: StorageConstants().localizationLocalOrDevice(),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.initial,
-        // home: BottomBar(),
+        home: const SplashScreen(),
         themeMode: storage.read(StorageConstants.isDarkMode) ?? false
             ? ThemeMode.dark
             : ThemeMode.light,

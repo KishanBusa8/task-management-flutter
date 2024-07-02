@@ -50,7 +50,7 @@ class SignInController extends GetxController {
       _globalController.user.value = User.fromJson(response.body['user']);
       await GetStorage().write(StorageConstants.token, response.body['token']);
       await GetStorage().write(
-        StorageConstants.store,
+        StorageConstants.user,
         jsonEncode(_globalController.user.toJson()),
       );
 

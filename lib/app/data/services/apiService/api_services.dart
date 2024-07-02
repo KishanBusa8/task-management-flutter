@@ -63,6 +63,7 @@ class ApiService extends GetConnect {
     if (response?.statusCode == 401 &&
         !(response?.request?.url.toString().contains(ApiConstants.signIn) ??
             false)) {
+      GetStorage().erase();
       Get.offAllNamed(Routes.signIn);
       return const Response(
         body: {'error': 'unauthorized'},

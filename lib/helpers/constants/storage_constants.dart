@@ -6,7 +6,7 @@ class StorageConstants {
   final storage = GetStorage();
 
   static const String token = "token";
-  static const String store = "store";
+  static const String user = "user";
   static const String locale = "locale";
 
   static const localeName = "localeName";
